@@ -22,7 +22,6 @@ import FeatureTemplate from "esri/layers/support/FeatureTemplate";
 
 // example
 import {Scene} from "./SceneLayerExample";
-import { SpatialReference } from "esri/geometry";
 //import {Scene} from "./BimExample";
 
 
@@ -48,13 +47,16 @@ function createFullscreen(): HTMLDivElement {
 }
 
 class App {
+
+    delete(): void{
+
+    }
     private view: SceneView;
     private scene: Scene;
 
     // ui
     private editor: Editor;
     private itemList: ItemList<SceneItem>;
-    private floorSlider: Slider;
 
 	constructor() {
         window["app"] = this;
@@ -119,6 +121,12 @@ class App {
             container: document.createElement("div"),
             layerInfos: layerinfos
         });
+        //this.editor.supportingWidgetDefaults.sketch.polygonSymbol
+        //this.editor.supportingWidgetDefaults.sketch.defaultUpdateOptions.enableZ = false;
+        //this.editor.supportingWidgetDefaults.sketch.defaultUpdateOptions
+        //this.editor.viewModel.sketchViewModel.on("create", (e)=>{
+        //    e.state
+        //})
 
         let editedItem: SceneItem = null;
         let editedItemInfo: {layer: FeatureLayer, objectId: number, resetGeometry: Geometry, resetAttributes: any } = null;
@@ -349,52 +357,6 @@ class App {
         });
         */
 
-        const floorNumbers: number[] = [];
-        for( let i=this.scene.minFloor;i<=this.scene.maxFloor; ++i ){
-            floorNumbers.push(i);
-        }
-
-
-        const bimUIPanel = document.createElement("div") as HTMLDivElement;
-        bimUIPanel.id = "bim-panel";
-        bimUIPanel.classList.add("esri-widget");
-        bimUIPanel.style.padding = "0.8em";
-
-
-        const bimPanelText = document.createElement("p") as HTMLParagraphElement;
-        bimPanelText.innerHTML = "floor";
-        bimPanelText.style.paddingLeft = "20px";
-        bimPanelText.style.paddingRight = "20px";
-        bimUIPanel.appendChild(bimPanelText);
-
-        const floorSliderContainer = document.createElement("div") as HTMLDivElement;
-        bimUIPanel.appendChild(floorSliderContainer);
-
-        floorSliderContainer.style.height = "200px";
-        floorSliderContainer.style.margin = "1em 0 1em -20px";
-        floorSliderContainer.style.background = "transparent";
-        this.floorSlider = new Slider({
-            container: floorSliderContainer,
-            min: this.scene.minFloor,
-            max: this.scene.maxFloor,
-            precision: 0,
-            layout: "vertical",
-            steps: 1,
-            tickConfigs: [
-                {
-                    mode: "position",
-                    values: floorNumbers,
-                    labelsVisible: true
-                }
-            ],
-            values: [this.scene.activeFloor]
-        });
-
-
-        this.floorSlider.on("thumb-drag", (event)=>{
-            const newFloor = event.value;
-            this.scene.activeFloor = newFloor;
-        });
 
 
         
@@ -416,7 +378,6 @@ class App {
         
 
         if(this.scene.name == "bim-example"){
-            this.view.ui.add([bimUIPanel], "bottom-left");
         }else{
             const cameraPanel = document.getElementById("camera-panel") as HTMLDivElement;
             cameraPanel.style.display = null;

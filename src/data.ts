@@ -27,15 +27,33 @@ function createControlCurveSymbol(): LineSymbol3D{
 }
 
 function getPolygonAnnotationSymbol(): SimpleFillSymbol | PolygonSymbol3D{
-    return new SimpleFillSymbol();
-  }
+    //return new SimpleFillSymbol();
+    return new PolygonSymbol3D({
+        symbolLayers: [{
+            type: "fill",  // autocasts as new FillSymbol3DLayer()
+            material: {
+                color: [255, 50, 51, 0.4]
+            },
+            outline: {
+                color: "black",
+                size: "1px"
+            }
+        }]
+    });
+}
 
 
 function getPointAnnotationSymbol(): PointSymbol3D{
     return new PointSymbol3D({symbolLayers:[
         new IconSymbol3DLayer({
             size: 8,  // points
-            material: { color: "red" }
+            material: {
+                color: [255, 50, 51, 0.4]
+            },
+            outline: {
+                color: "black",
+                size: "1px"
+            }
         })
     ]});
 }
@@ -293,6 +311,7 @@ export function mockupPolygonAnnotationsLayer(): FeatureLayer{
             attributes: {
                 ObjectID: 1,
                 label: "cleanup this space",
+                floor: 7,
                 payload: "{\"activeFloor\":7,\"cameraJSON\":{\"position\":{\"spatialReference\":{\"latestWkid\":3857,\"wkid\":102100},\"x\":19217854.771936584,\"y\":-5393044.020267442,\"z\":62.844063609838486},\"heading\":31.69392227253801,\"tilt\":46.896296459835156}}"
             }
         },
@@ -337,6 +356,7 @@ export function mockupPolygonAnnotationsLayer(): FeatureLayer{
             attributes: {
                 ObjectID: 3,
                 label: "prepare area for art exhibition",
+                floor: 2,
                 payload: "{\"activeFloor\":2,\"cameraJSON\":{\"position\":{\"spatialReference\":{\"latestWkid\":3857,\"wkid\":102100},\"x\":19217908.03229506,\"y\":-5393006.696851547,\"z\":17.58430082537234},\"heading\":24.01682505226527,\"tilt\":61.28988126042055}}"
             }
         }
@@ -345,6 +365,7 @@ export function mockupPolygonAnnotationsLayer(): FeatureLayer{
     
 
     const polygonAnnotations = new FeatureLayer({
+        title: "area annotation",
         source: features,
         geometryType: "polygon",
         spatialReference: {
@@ -362,6 +383,11 @@ export function mockupPolygonAnnotationsLayer(): FeatureLayer{
                 name: "label",
                 type: "string",
                 defaultValue: ""
+            },
+            {
+                name: "floor",
+                type: "integer",
+                defaultValue: 0
             },
             {
                 name: "payload",
@@ -394,7 +420,8 @@ export function mockupPointAnnotationsLayer(): FeatureLayer{
             },
             attributes: {
                 ObjectID: 1,
-                label: "more hand sanitizer needed!",
+                label: "out of service",
+                floor: 4,
                 payload: "{\"activeFloor\":4,\"cameraJSON\":{\"position\":{\"spatialReference\":{\"latestWkid\":3857,\"wkid\":102100},\"x\":19217930.368655637,\"y\":-5393016.560506998,\"z\":20.85097479261458},\"heading\":69.22666739635041,\"tilt\":30.729945183381567}}"
             }
         },
@@ -412,6 +439,7 @@ export function mockupPointAnnotationsLayer(): FeatureLayer{
             attributes: {
                 ObjectID: 2,
                 label: "chair is broken",
+                floor: 2,
                 payload: "{\"activeFloor\":2,\"cameraJSON\":{\"position\":{\"spatialReference\":{\"latestWkid\":3857,\"wkid\":102100},\"x\":19217854.962134216,\"y\":-5393011.261169908,\"z\":14.156350567936897},\"heading\":124.4190966724694,\"tilt\":49.92131652604984}}"
             }
         },
@@ -428,7 +456,8 @@ export function mockupPointAnnotationsLayer(): FeatureLayer{
             },
             attributes: {
                 ObjectID: 3,
-                label: "install hand sanitizer ASAP",
+                label: "tab is not working properly",
+                floor: 2,
                 payload: "{\"activeFloor\":2,\"cameraJSON\":{\"position\":{\"spatialReference\":{\"latestWkid\":3857,\"wkid\":102100},\"x\":19217915.62607714,\"y\":-5393009.327107981,\"z\":13.660603593103588},\"heading\":154.87859533943296,\"tilt\":57.85159388309063}}"
             }
         },
@@ -446,6 +475,7 @@ export function mockupPointAnnotationsLayer(): FeatureLayer{
             attributes: {
                 ObjectID: 4,
                 label: "what are these cubes about?",
+                floor: 2,
                 payload: "{\"activeFloor\":2,\"cameraJSON\":{\"position\":{\"spatialReference\":{\"latestWkid\":3857,\"wkid\":102100},\"x\":19217852.392227482,\"y\":-5392988.496369267,\"z\":14.072521711699665},\"heading\":188.4509352519618,\"tilt\":63.90100944339568}}"
             }
         }
@@ -454,6 +484,7 @@ export function mockupPointAnnotationsLayer(): FeatureLayer{
       
 
     const pointAnnotations = new FeatureLayer({
+        title: "point annotation",
         source: features,
         geometryType: "point",
         spatialReference: {
@@ -471,6 +502,11 @@ export function mockupPointAnnotationsLayer(): FeatureLayer{
                 name: "label",
                 type: "string",
                 defaultValue: ""
+            },
+            {
+                name: "floor",
+                type: "integer",
+                defaultValue: 0
             },
             {
                 name: "payload",

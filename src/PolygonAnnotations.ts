@@ -63,7 +63,7 @@ function getLabelSymbol(): PointSymbol3D{
         symbolLayers:[
             new TextSymbol3DLayer({
                 size: 16,
-                text: "label test",
+                text: "",
                 material: { color: "black" }
             })
         ],
@@ -156,6 +156,10 @@ export class PolygonAnnotations extends SceneItemManager<PolygonAnnotation>{
                 {
                     name: "label",
                     label: "label"
+                },
+                {
+                    name: "floor",
+                    label: "floor"
                 }
             ]
         }

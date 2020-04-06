@@ -86,7 +86,7 @@ export class Scene extends SceneBase{
     cameraLayer = new GraphicsLayer({elevationInfo: {mode: "absolute-height"}});
 
     // persistet ---
-    splines: Splines = null;
+    //splines: Splines = null;
     pointAnnotations: PointAnnotations = null;
     polygonAnnotations: PolygonAnnotations = null;
 
@@ -232,13 +232,14 @@ export class Scene extends SceneBase{
                     i++;
                 }
 
+                this.buildUI();
                 loadedCallback();
             });
         });
 
 
         // load stuff
-        this.splines = new Splines( this, mockupControlCurveLayer());
+        //this.splines = new Splines( this, mockupControlCurveLayer());
         this.pointAnnotations = new PointAnnotations( this, mockupPointAnnotationsLayer());
         this.polygonAnnotations = new PolygonAnnotations( this, mockupPolygonAnnotationsLayer());
 
@@ -283,9 +284,12 @@ export class Scene extends SceneBase{
     clickItem( item: SceneItem ): void{
         if("payload" in item.attributes){
             const payload = this.decodeSceneItemPayload(item.attributes["payload"]);
-            this.activeFloor = payload.activeFloor;
-            // TODO: update gui
-            //this.floorSlider.values = [this.scene.activeFloor];
+            //const floor = payload.activeFloor;
+            const floor = item.attributes["floor"];
+            this.activeFloor = floor;
+
+            // update gui
+            this.floorSlider.values = [this.activeFloor];
             this.view.goTo( payload.camera );
         }
     }
@@ -294,6 +298,7 @@ export class Scene extends SceneBase{
 
 
 
+    /*
     createView( container: HTMLDivElement): SceneView{
         const view = createSceneView(container);
 
@@ -312,6 +317,60 @@ export class Scene extends SceneBase{
         view.map = map;
 
         return view;
+    }
+    */
+
+
+    private floorSlider: Slider;
+    buildUI(){
+        const floorNumbers: number[] = [];
+        for( let i=this.minFloor;i<=this.maxFloor; ++i ){
+            floorNumbers.push(i);
+        }
+
+
+        const bimUIPanel = document.createElement("div") as HTMLDivElement;
+        bimUIPanel.id = "bim-panel";
+        bimUIPanel.classList.add("esri-widget");
+        bimUIPanel.style.padding = "0.8em";
+
+
+        const bimPanelText = document.createElement("p") as HTMLParagraphElement;
+        bimPanelText.innerHTML = "floor";
+        bimPanelText.style.paddingLeft = "20px";
+        bimPanelText.style.paddingRight = "20px";
+        bimUIPanel.appendChild(bimPanelText);
+
+        const floorSliderContainer = document.createElement("div") as HTMLDivElement;
+        bimUIPanel.appendChild(floorSliderContainer);
+
+        floorSliderContainer.style.height = "200px";
+        floorSliderContainer.style.margin = "1em 0 1em -20px";
+        floorSliderContainer.style.background = "transparent";
+        this.floorSlider = new Slider({
+            container: floorSliderContainer,
+            min: this.minFloor,
+            max: this.maxFloor,
+            precision: 0,
+            layout: "vertical",
+            steps: 1,
+            tickConfigs: [
+                {
+                    mode: "position",
+                    values: floorNumbers,
+                    labelsVisible: true
+                }
+            ],
+            values: [this.activeFloor]
+        });
+
+
+        this.floorSlider.on("thumb-drag", (event)=>{
+            const newFloor = event.value;
+            this.activeFloor = newFloor;
+        });
+
+        this.view.ui.add([bimUIPanel], "bottom-left");
     }
 }
 

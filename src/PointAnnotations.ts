@@ -148,6 +148,10 @@ export class PointAnnotations extends SceneItemManager<PointAnnotation>{
                 {
                     name: "label",
                     label: "label"
+                },
+                {
+                    name: "floor",
+                    label: "floor"
                 }
             ]
         }
