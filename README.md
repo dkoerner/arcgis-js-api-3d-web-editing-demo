@@ -1,5 +1,5 @@
 # arcgis-js-api-3d-web-editing-demo
-This app demonstrates 3d editing capabilities of the ArcGIS JS API.
+This app demonstrates 3d editing capabilities of the [ArcGIS API for Javascript](https://developers.arcgis.com/javascript/).
 
 ![thumbnail](./dist/arcgis-js-api-editing-demo-app-thumbnail.jpg)
 
