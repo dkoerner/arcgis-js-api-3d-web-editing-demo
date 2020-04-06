@@ -3,7 +3,7 @@ This app demonstrates 3d editing capabilities of the [ArcGIS API for Javascript]
 
 ![thumbnail](./dist/arcgis-js-api-editing-demo-app-thumbnail.jpg)
 
-See [http://dkoerner.github.io/arcgis-js-api-3d-web-editing-demo/dist/index.html](http://dkoerner.github.io/arcgis-js-api-3d-web-editing-demo/dist/index.html)
+Live version at [http://dkoerner.github.io/arcgis-js-api-3d-web-editing-demo/dist/index.html](http://dkoerner.github.io/arcgis-js-api-3d-web-editing-demo/dist/index.html)
 
 run
 ```
