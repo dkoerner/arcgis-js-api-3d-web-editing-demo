@@ -120,7 +120,7 @@ export class Scene extends SceneBase{
         url: "https://tiles.arcgis.com/tiles/cFEFS0EWrhfDeVw9/arcgis/rest/services/Buildings_Frankfurt_2021/SceneServer"
     });
     waterLayer = new FeatureLayer( {
-        url: "https://services9.arcgis.com/u0sSNqDXr7puKJrF/arcgis/rest/services/FrankfurtWater/FeatureServer"
+        url: "https://services7.arcgis.com/wdgKFvvZvYZ3Biji/arcgis/rest/services/Frankfurt_water/FeatureServer"
     });
 
     floorFieldName: string = "BldgLevel"; // name of the attribute which identifies the floor
