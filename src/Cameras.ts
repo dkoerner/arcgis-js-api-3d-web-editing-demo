@@ -269,7 +269,7 @@ export function drawCamera( scene: any, cameraLayer: GraphicsLayer, pipView: Sce
         elevationInfo: cameraLayer.elevationInfo, 
         defaultZ: 100, 
         hasZ: true
-    });
+    } as any);
 
     let camera: Camera = null;
     let startPoint: Point = null;

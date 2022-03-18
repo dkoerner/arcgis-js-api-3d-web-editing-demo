@@ -258,7 +258,7 @@ export function mockupControlCurveLayer(): FeatureLayer{
         elevationInfo: {mode: "absolute-height"},
         //elevationInfo: {mode: "relative-to-scene"},
         hasZ: true
-    });
+    } as any);
 
 
     return controlCurves;
@@ -397,7 +397,7 @@ export function mockupPolygonAnnotationsLayer(): FeatureLayer{
         ],
         elevationInfo: {mode: "absolute-height"},
         hasZ: true
-    });
+    } as any);
 
 
     return polygonAnnotations;
@@ -516,7 +516,7 @@ export function mockupPointAnnotationsLayer(): FeatureLayer{
         ],
         elevationInfo: {mode: "absolute-height"},
         hasZ: true
-    });
+    } as any);
 
     return pointAnnotations;
 }

@@ -132,7 +132,8 @@ export class Scene extends SceneBase{
             ]
         });
         // set the filter in the filters array on the layer
-        this.bimLayer.filters = [buildingFilter];
+        this.bimLayer.filters.removeAll();
+        this.bimLayer.filters.add(buildingFilter);
         // specify which filter is the one that should be applied
         this.bimLayer.activeFilterId = buildingFilter.id;
     }
