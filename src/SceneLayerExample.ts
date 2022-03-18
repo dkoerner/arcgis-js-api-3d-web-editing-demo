@@ -117,7 +117,7 @@ export class Scene extends SceneBase{
 
     // scenelayer example
     sceneLayer = new IntegratedMeshLayer({
-        url: "https://tiles.arcgis.com/tiles/u0sSNqDXr7puKJrF/arcgis/rest/services/Frankfurt2017_v17/SceneServer"
+        url: "https://tiles.arcgis.com/tiles/cFEFS0EWrhfDeVw9/arcgis/rest/services/Buildings_Frankfurt_2021/SceneServer"
     });
     waterLayer = new FeatureLayer( {
         url: "https://services9.arcgis.com/u0sSNqDXr7puKJrF/arcgis/rest/services/FrankfurtWater/FeatureServer"
