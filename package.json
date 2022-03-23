@@ -23,6 +23,6 @@
   },
   "dependencies": {
     "@arcgis/core": "^4.22.2",
-    "three": "^0.125.0"
+    "three": "^0.138.3"
   }
 }
