@@ -1,76 +1,24 @@
 
 
-import EsriMap from "esri/Map";
-import SceneView from "esri/views/SceneView";
-import request from "esri/request";
-import {lngLatToXY} from "esri/geometry/support/webMercatorUtils";
-import Point from "esri/geometry/Point";
-import Polygon from "esri/geometry/Polygon";
-import Symbol3D from "esri/symbols/Symbol3D";
-import Geometry from "esri/geometry/Geometry";
-
-
-import Editor from "esri/widgets/Editor";
-import Expand from "esri/widgets/Expand";
-
-import SketchViewModel from "esri/widgets/Sketch/SketchViewModel";
-import GraphicsLayer from "esri/layers/GraphicsLayer";
-import Graphic from "esri/Graphic";
-import PointSymbol3D from "esri/symbols/PointSymbol3D";
-import LineSymbol3D from "esri/symbols/LineSymbol3D";
-import PolygonSymbol3D from "esri/symbols/PolygonSymbol3D";
-
-import ObjectSymbol3DLayer from "esri/symbols/ObjectSymbol3DLayer";
-import LineSymbol3DLayer from "esri/symbols/LineSymbol3DLayer";
-import PathSymbol3DLayer from "esri/symbols/PathSymbol3DLayer";
-
-import SceneLayer from "esri/layers/SceneLayer";
-import IntegratedMeshLayer from "esri/layers/IntegratedMeshLayer";
-
-import geometryEngine from "esri/geometry/geometryEngine";
-import { Polyline, SpatialReference } from "esri/geometry";
-import EsriCamera from "esri/Camera";
-import Slider from "esri/widgets/Slider";
-import Draw from "esri/views/draw/Draw";
-
-import FeatureLayer from "esri/layers/FeatureLayer";
-import BuildingSceneLayer from "esri/layers/BuildingSceneLayer";
-import WebScene from "esri/WebScene";
-
-import {mockupControlCurveLayer, mockupPointAnnotationsLayer, mockupPolygonAnnotationsLayer} from "./data";
-
-
-import {toRenderCoordinates, fromRenderCoordinates} from "esri/views/3d/externalRenderers";
-
-import BuildingFilter from "esri/layers/support/BuildingFilter";
-
-
+import EsriMap from "@arcgis/core/Map";
+import SceneView from "@arcgis/core/views/SceneView";
+import Point from "@arcgis/core/geometry/Point";
+import GraphicsLayer from "@arcgis/core/layers/GraphicsLayer";
+import FeatureLayer from "@arcgis/core/layers/FeatureLayer";
+import IntegratedMeshLayer from "@arcgis/core/layers/IntegratedMeshLayer";
+import EsriCamera from "@arcgis/core/Camera";
+import Slider from "@arcgis/core/widgets/Slider";
+import {mockupControlCurveLayer} from "./data";
+import SimpleRenderer from "@arcgis/core//renderers/SimpleRenderer";
+import PolygonSymbol3D from "@arcgis/core/symbols/PolygonSymbol3D";
 
 // scene
 import {SceneItem, SceneBase} from "./Scene";
 import {Splines, Spline} from "./Splines";
 import {Camera, createCamera} from "./Cameras";
-import {PointAnnotations} from "./PointAnnotations";
-import {PolygonAnnotations} from "./PolygonAnnotations";
-
-// editor
-import UpdateWorkflowData from "esri/widgets/Editor/UpdateWorkflowData";
-import CreateWorkflowData from "esri/widgets/Editor/CreateWorkflowData";
-import Workflow from "esri/widgets/Editor/Workflow";
-
-// ui
-import {ItemList} from "./ItemList";
 
 
-import * as THREE from "three";
-import { Layers, Color, Vector3, NumberKeyframeTrack } from "three";
-import { SimpleMarkerSymbol } from "esri/symbols";
-
-import {baseURL, Vec2} from "./utils";
-import { SimpleRenderer } from "esri/renderers";
-
-
-
+const frankfurt_scene_layer_url = "https://tiles.arcgis.com/tiles/wdgKFvvZvYZ3Biji/arcgis/rest/services/2020_09_07_Frankfurt_AdaptedThreshold/SceneServer";
 
 
 export interface SceneItemPayload{
@@ -117,11 +65,13 @@ export class Scene extends SceneBase{
 
     // scenelayer example
     sceneLayer = new IntegratedMeshLayer({
-        url: "https://tiles.arcgis.com/tiles/cFEFS0EWrhfDeVw9/arcgis/rest/services/Buildings_Frankfurt_2021/SceneServer"
+        url: frankfurt_scene_layer_url
     });
+    /*
     waterLayer = new FeatureLayer( {
         url: "https://services7.arcgis.com/wdgKFvvZvYZ3Biji/arcgis/rest/services/Frankfurt_water/FeatureServer"
     });
+    */
 
     floorFieldName: string = "BldgLevel"; // name of the attribute which identifies the floor
 
@@ -153,6 +103,7 @@ export class Scene extends SceneBase{
 
         this.view.map.layers.add(this.sceneLayer);
 
+        /*
         this.waterLayer.elevationInfo = {mode: "absolute-height", offset: 1};
         this.waterLayer.renderer = new SimpleRenderer({
             symbol: new PolygonSymbol3D({
@@ -166,6 +117,7 @@ export class Scene extends SceneBase{
         });
 
         this.view.map.layers.add(this.waterLayer);
+        */
 
 
 
@@ -247,7 +199,7 @@ export class Scene extends SceneBase{
 
         // IM -------
         const layer = new IntegratedMeshLayer({
-            url: "https://tiles.arcgis.com/tiles/u0sSNqDXr7puKJrF/arcgis/rest/services/Frankfurt2017_v17/SceneServer"
+            url: frankfurt_scene_layer_url
         });
 
         /*
@@ -290,7 +242,6 @@ export class Scene extends SceneBase{
             container: timeSliderContainer,
             min: 0,
             max: 100,
-            labelsVisible: false,
             precision: 0,
             values: [initalValue]
         });

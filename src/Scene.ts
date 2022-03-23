@@ -1,11 +1,10 @@
 
 
 
-import EsriMap from "esri/Map";
-import SceneView from "esri/views/SceneView";
-import FeatureLayer from "esri/layers/FeatureLayer";
-import Graphic from "esri/Graphic";
-import Geometry from "esri/geometry/Geometry";
+import SceneView from "@arcgis/core/views/SceneView";
+import FeatureLayer from "@arcgis/core/layers/FeatureLayer";
+import Graphic from "@arcgis/core/Graphic";
+import Geometry from "@arcgis/core/geometry/Geometry";
 import {Map, MapConstructor, SimpleEventDispatcher} from "./utils";
 
 import {Item} from "./ItemList";

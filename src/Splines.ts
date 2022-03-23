@@ -2,46 +2,17 @@
 
 
 
-import EsriMap from "esri/Map";
-import SceneView from "esri/views/SceneView";
-import request from "esri/request";
-import {lngLatToXY} from "esri/geometry/support/webMercatorUtils";
-import Point from "esri/geometry/Point";
-import Polygon from "esri/geometry/Polygon";
-import Symbol3D from "esri/symbols/Symbol3D";
-
-import Editor from "esri/widgets/Editor";
-import Expand from "esri/widgets/Expand";
-
-import {Map, MapConstructor, generateUID} from "./utils";
-
-import SketchViewModel from "esri/widgets/Sketch/SketchViewModel";
-import GraphicsLayer from "esri/layers/GraphicsLayer";
-import Graphic from "esri/Graphic";
-import Geometry from "esri/geometry/Geometry";
-import PointSymbol3D from "esri/symbols/PointSymbol3D";
-import LineSymbol3D from "esri/symbols/LineSymbol3D";
-
-import ObjectSymbol3DLayer from "esri/symbols/ObjectSymbol3DLayer";
-import LineSymbol3DLayer from "esri/symbols/LineSymbol3DLayer";
-import PathSymbol3DLayer from "esri/symbols/PathSymbol3DLayer";
-
-import SceneLayer from "esri/layers/SceneLayer";
-import IntegratedMeshLayer from "esri/layers/IntegratedMeshLayer";
-
-import geometryEngine from "esri/geometry/geometryEngine";
-import { Polyline, SpatialReference } from "esri/geometry";
-import EsriCamera from "esri/Camera";
-import Slider from "esri/widgets/Slider";
-import Draw from "esri/views/draw/Draw";
-
-import FeatureLayer from "esri/layers/FeatureLayer";
-
-import {mockupControlCurveLayer, mockupPointAnnotationsLayer} from "./data";
-
-
-import {toRenderCoordinates, fromRenderCoordinates} from "esri/views/3d/externalRenderers";
-
+import SceneView from "@arcgis/core/views/SceneView";
+import Point from "@arcgis/core/geometry/Point";
+import Polygon from "@arcgis/core/geometry/Polygon";
+import GraphicsLayer from "@arcgis/core/layers/GraphicsLayer";
+import Graphic from "@arcgis/core/Graphic";
+import Geometry from "@arcgis/core/geometry/Geometry";
+import LineSymbol3D from "@arcgis/core/symbols/LineSymbol3D";
+import LineSymbol3DLayer from "@arcgis/core/symbols/LineSymbol3DLayer";
+import { Polyline, SpatialReference } from "@arcgis/core/geometry";
+import FeatureLayer from "@arcgis/core/layers/FeatureLayer";
+import {toRenderCoordinates, fromRenderCoordinates} from "@arcgis/core/views/3d/externalRenderers";
 
 // scene
 import {SceneItemManager, SceneItem, SceneBase, LayerInfo} from "./Scene";

@@ -1,24 +1,19 @@
-import EsriMap from "esri/Map";
-import SceneView from "esri/views/SceneView";
-import Geometry from "esri/geometry/Geometry";
-import EsriCamera from "esri/Camera";
-import FeatureLayer from "esri/layers/FeatureLayer";
+import SceneView from "@arcgis/core/views/SceneView";
+import Geometry from "@arcgis/core/geometry/Geometry";
+import FeatureLayer from "@arcgis/core/layers/FeatureLayer";
 
 // scene
 import {SceneItem} from "./Scene";
-import {drawCamera, createCamera, move} from "./Cameras";
+import {move} from "./Cameras";
 
 
 // ui
 import {ItemList} from "./ItemList";
-import Expand from "esri/widgets/Expand";
-import Slider from "esri/widgets/Slider";
-import Editor from "esri/widgets/Editor";
-import UpdateWorkflowData from "esri/widgets/Editor/UpdateWorkflowData";
-import CreateWorkflowData from "esri/widgets/Editor/CreateWorkflowData";
-import Workflow from "esri/widgets/Editor/Workflow";
-import Attribution from "esri/widgets/Attribution";
-import FeatureTemplate from "esri/layers/support/FeatureTemplate";
+import Expand from "@arcgis/core/widgets/Expand";
+import Editor from "@arcgis/core/widgets/Editor";
+import UpdateWorkflowData from "@arcgis/core/widgets/Editor/UpdateWorkflowData";
+import CreateWorkflowData from "@arcgis/core/widgets/Editor/CreateWorkflowData";
+import Workflow from "@arcgis/core/widgets/Editor/Workflow";
 
 // example
 import {Scene} from "./SceneLayerExample";

@@ -1,17 +1,17 @@
-import FeatureLayer from "esri/layers/FeatureLayer";
-import { SimpleRenderer } from "esri/renderers";
+import FeatureLayer from "@arcgis/core/layers/FeatureLayer";
+import { SimpleRenderer } from "@arcgis/core/renderers";
 
-import Graphic from "esri/Graphic";
+import Graphic from "@arcgis/core/Graphic";
 
-import PolygonSymbol3D from "esri/symbols/PolygonSymbol3D";
-import SimpleFillSymbol = require("esri/symbols/SimpleFillSymbol");
+import PolygonSymbol3D from "@arcgis/core/symbols/PolygonSymbol3D";
+import SimpleFillSymbol from "@arcgis/core/symbols/SimpleFillSymbol";
 
 
 
-import PointSymbol3D from "esri/symbols/PointSymbol3D";
-import LineSymbol3D from "esri/symbols/LineSymbol3D";
-import LineSymbol3DLayer from "esri/symbols/LineSymbol3DLayer";
-import IconSymbol3DLayer from "esri/symbols/IconSymbol3DLayer";
+import PointSymbol3D from "@arcgis/core/symbols/PointSymbol3D";
+import LineSymbol3D from "@arcgis/core/symbols/LineSymbol3D";
+import LineSymbol3DLayer from "@arcgis/core/symbols/LineSymbol3DLayer";
+import IconSymbol3DLayer from "@arcgis/core/symbols/IconSymbol3DLayer";
 
 function createControlCurveSymbol(): LineSymbol3D{
   return new LineSymbol3D({

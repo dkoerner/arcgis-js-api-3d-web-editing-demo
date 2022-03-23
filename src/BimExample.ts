@@ -1,77 +1,19 @@
 
 
-import EsriMap from "esri/Map";
-import SceneView from "esri/views/SceneView";
-import request from "esri/request";
-import {lngLatToXY} from "esri/geometry/support/webMercatorUtils";
-import Point from "esri/geometry/Point";
-import Polygon from "esri/geometry/Polygon";
-import Symbol3D from "esri/symbols/Symbol3D";
-import Geometry from "esri/geometry/Geometry";
-
-
-import Editor from "esri/widgets/Editor";
-import Expand from "esri/widgets/Expand";
-
-import SketchViewModel from "esri/widgets/Sketch/SketchViewModel";
-import GraphicsLayer from "esri/layers/GraphicsLayer";
-import Graphic from "esri/Graphic";
-import PointSymbol3D from "esri/symbols/PointSymbol3D";
-import LineSymbol3D from "esri/symbols/LineSymbol3D";
-
-import ObjectSymbol3DLayer from "esri/symbols/ObjectSymbol3DLayer";
-import LineSymbol3DLayer from "esri/symbols/LineSymbol3DLayer";
-import PathSymbol3DLayer from "esri/symbols/PathSymbol3DLayer";
-
-import SceneLayer from "esri/layers/SceneLayer";
-import IntegratedMeshLayer from "esri/layers/IntegratedMeshLayer";
-
-import geometryEngine from "esri/geometry/geometryEngine";
-import { Polyline, SpatialReference } from "esri/geometry";
-import EsriCamera from "esri/Camera";
-import Slider from "esri/widgets/Slider";
-import Draw from "esri/views/draw/Draw";
-
-import FeatureLayer from "esri/layers/FeatureLayer";
-import BuildingSceneLayer from "esri/layers/BuildingSceneLayer";
-import WebScene from "esri/WebScene";
-
-import {mockupControlCurveLayer, mockupPointAnnotationsLayer, mockupPolygonAnnotationsLayer} from "./data";
-
-
-import {toRenderCoordinates, fromRenderCoordinates} from "esri/views/3d/externalRenderers";
-
-import BuildingFilter from "esri/layers/support/BuildingFilter";
-
-
+import EsriMap from "@arcgis/core/Map";
+import SceneView from "@arcgis/core/views/SceneView";
+import GraphicsLayer from "@arcgis/core/layers/GraphicsLayer";
+import EsriCamera from "@arcgis/core/Camera";
+import Slider from "@arcgis/core/widgets/Slider";
+import BuildingSceneLayer from "@arcgis/core/layers/BuildingSceneLayer";
+import {mockupPointAnnotationsLayer, mockupPolygonAnnotationsLayer} from "./data";
+import BuildingFilter from "@arcgis/core/layers/support/BuildingFilter";
 
 // scene
 import {SceneItem, SceneBase} from "./Scene";
-import {Splines, Spline} from "./Splines";
 import {Camera} from "./Cameras";
 import {PointAnnotations} from "./PointAnnotations";
 import {PolygonAnnotations} from "./PolygonAnnotations";
-
-// editor
-import UpdateWorkflowData from "esri/widgets/Editor/UpdateWorkflowData";
-import CreateWorkflowData from "esri/widgets/Editor/CreateWorkflowData";
-import Workflow from "esri/widgets/Editor/Workflow";
-
-// ui
-import {ItemList} from "./ItemList";
-
-
-import * as THREE from "three";
-import { Layers, Color, Vector3, NumberKeyframeTrack } from "three";
-import { SimpleMarkerSymbol } from "esri/symbols";
-
-import {baseURL, Vec2} from "./utils";
-
-
-
-
-
-
 
 export interface SceneItemPayload{
     activeFloor: number;

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta charset="utf-8" />
         <title>Demo</title>
         <style>
                 html, body, #sceneview-container {
@@ -104,22 +105,8 @@
                 padding: 10px;
               }
         </style>
-            
         <link rel="stylesheet" href="https://s3-us-west-1.amazonaws.com/patterns.esri.com/files/calcite-web/1.2.5/css/calcite-web.min.css">
-        <link rel="stylesheet" href="https://js.arcgis.com/4.15/esri/css/main.css">
-
-        <script>
-                // Local test-apps (dojo-config) will enable native promises but the app uses some dojo promise
-                // stuff. Explicitly force dojo promises for now.
-                var dojoConfig = {
-                  has: {
-                    "esri-native-promise": false
-                  }
-                };
-        </script>
-
-        <script src="https://jsdev.arcgis.com/4.15"></script>
-    </head>
+    <script defer src="index.js"></script><link href="index.db7fc496dad45c764396.css" rel="stylesheet"></head>
     <body>
 
         <header class="top-nav fade-in" role="banner">
@@ -137,80 +124,5 @@
             <div id="camera-view-container" style="width: 320px; height:320px; border:1px solid black;display:none; margin-bottom: 5px;"></div>
             <p id="nframes-attribution">Data by courtesy of <a href="http://www.nframes.com" target="_blank">nframes.com</a></p>
         </div>
-
-
-          
-        <script>
-            require({
-                packages: [{
-                    name: "app",
-                    location: document.location.pathname.replace(/\/[^/]+$/, "")
-                }]
-            }, ["app/main"], function() {
-            });
-        </script>
-
-        <!-- script>
-          require(["esri/layers/FeatureLayer", "esri/views/SceneView", "esri/widgets/Editor"], function( FeatureLayer, SceneView, Editor ) {
-
-            var features = [
-              {
-                geometry: {
-                    type: "point",
-                    x: -100,
-                    y: 38,
-                    z: 0
-                },
-                attributes: {
-                  ObjectID: 1
-                }
-              }
-            ];
-            var renderer = {
-              type: "simple",  // autocasts as new SimpleRenderer()
-              symbol: {
-                type: "simple-marker",  // autocasts as new SimpleMarkerSymbol()
-                size: 6,
-                color: "black",
-                outline: {  // autocasts as new SimpleLineSymbol()
-                  width: 0.5,
-                  color: "white"
-                }
-              }
-            };
-          
-            ///*
-            const fl = new FeatureLayer({
-                source: features,
-                renderer: renderer,
-                objectIdField: "ObjectID",
-                outFields: ["*"],
-                fields: [
-                    {
-                        name: "label",
-                        type: "string",
-                        defaultValue: ""
-                    }
-                ],
-                elevationInfo: {mode: "absolute-height"}
-            });
-
-            //var div = document.createElement("div");
-            //document.body.appendChild(div);
-            var view = new SceneView({
-              container: "sceneview-container",
-              map: {
-                basemap: "topo",
-                layers:[fl]
-              }
-            });
-
-
-            view.whenLayerView(fl).then(function(){
-              var editor = new Editor({view:view, container: document.createElement("div")});
-              view.ui.add(editor, "top-right");
-            });
-          });
-        </script -->
     </body>
 </html>

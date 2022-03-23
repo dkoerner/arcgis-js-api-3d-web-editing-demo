@@ -2,24 +2,24 @@
 
 
 
-import SceneView from "esri/views/SceneView";
-import Point from "esri/geometry/Point";
+import SceneView from "@arcgis/core/views/SceneView";
+import Point from "@arcgis/core/geometry/Point";
 
 
-import SketchViewModel from "esri/widgets/Sketch/SketchViewModel";
-import GraphicsLayer from "esri/layers/GraphicsLayer";
-import Graphic from "esri/Graphic";
-import PointSymbol3D from "esri/symbols/PointSymbol3D";
-import LineSymbol3D from "esri/symbols/LineSymbol3D";
+import SketchViewModel from "@arcgis/core/widgets/Sketch/SketchViewModel";
+import GraphicsLayer from "@arcgis/core/layers/GraphicsLayer";
+import Graphic from "@arcgis/core/Graphic";
+import PointSymbol3D from "@arcgis/core/symbols/PointSymbol3D";
+import LineSymbol3D from "@arcgis/core/symbols/LineSymbol3D";
 
-import ObjectSymbol3DLayer from "esri/symbols/ObjectSymbol3DLayer";
-import LineSymbol3DLayer from "esri/symbols/LineSymbol3DLayer";
+import ObjectSymbol3DLayer from "@arcgis/core/symbols/ObjectSymbol3DLayer";
+import LineSymbol3DLayer from "@arcgis/core/symbols/LineSymbol3DLayer";
 
 
 
-import { Polyline } from "esri/geometry";
-import EsriCamera from "esri/Camera";
-import Draw from "esri/views/draw/Draw";
+import { Polyline } from "@arcgis/core/geometry";
+import EsriCamera from "@arcgis/core/Camera";
+import Draw from "@arcgis/core/views/draw/Draw";
 
 
 
